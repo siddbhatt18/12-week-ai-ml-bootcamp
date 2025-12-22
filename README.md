@@ -1,554 +1,530 @@
-Below is a 12‑week, 80/20‑focused machine learning study plan plus 5 projects (from beginner to advanced). The idea is:
+Below is a 12-week, 80/20-focused machine learning plan aimed at getting you from beginner to building real projects. It emphasizes the core ~20% of concepts that deliver ~80% of practical value: basic Python, data handling, supervised learning (especially linear models, trees, and ensembles), model evaluation, and a taste of deep learning.
 
-- Focus on the core 20%: basic math intuition, Python, data handling, supervised learning (regression/classification), model evaluation, and a bit of deep learning.
-- Constant coding: you’ll write code every week, not just read theory.
-- Projects: you’ll start simple and gradually combine more concepts.
+You’ll also see 5 projects of increasing difficulty threaded into the timeline, each reinforcing specific concepts.
 
 Assumptions:
-- You know basic programming concepts but are not yet comfortable with ML/Python libraries.
-- You can study ~8–10 hours/week (adjust up/down as needed).
+- You know basic programming logic but not necessarily Python or ML.
+- You can spend ~8–12 hours per week.
+- Tools: Python, Jupyter Notebooks, scikit-learn, pandas, matplotlib/seaborn.
 
 ---
 
-## Overview of Core Concepts (the “20%”)
+## High-Level 80/20 Focus
 
-These will appear again and again in the plan:
+The “core 20%” we’ll prioritize:
 
-1. **Python + ML Stack**: NumPy, pandas, Matplotlib/Seaborn, scikit‑learn.
-2. **Data workflow**: loading, cleaning, splitting into train/validation/test.
-3. **Core algorithms**:
-   - Linear & logistic regression
-   - k‑Nearest Neighbors
-   - Decision trees & Random Forest
-   - Gradient boosted trees (e.g., XGBoost / LightGBM / GradientBoosting in sklearn)
-   - Basic neural networks (with Keras/PyTorch)
-4. **Metrics & evaluation**:
-   - Regression: MSE/RMSE, MAE, R²
-   - Classification: accuracy, precision, recall, F1, ROC‑AUC
-   - Cross‑validation, overfitting, train/test leakage
-5. **Feature engineering & preprocessing**:
-   - Handling missing data
-   - Encoding categorical variables
-   - Scaling/normalization
-6. **Model improvement**:
-   - Regularization (L1/L2)
-   - Hyperparameter tuning
-   - Bias–variance trade‑off
-7. **Basic deployment mindset**:
-   - Saving/loading models
-   - Using a trained model in a script or simple app
+1. **Python for data & ML**
+   - Jupyter, NumPy, pandas, basic plotting.
+2. **Core ML workflow**
+   - Framing problems, train/validation/test splits, feature preprocessing, model training, evaluation, iteration.
+3. **Key algorithms**
+   - Linear regression, logistic regression.
+   - Decision trees, random forests, gradient boosting (e.g., XGBoost/LightGBM if time).
+   - Basic k-NN, naive Bayes for variety.
+4. **Metrics & model thinking**
+   - Bias-variance, overfitting/underfitting, cross-validation, common metrics.
+5. **A taste of deep learning**
+   - Basic neural network with Keras/PyTorch for classification/regression.
+
+The remaining 80% (advanced math, fancy architectures, obscure models) is postponed until you’ve built and deployed a few real projects.
 
 ---
 
-## 12‑Week Plan (Week by Week)
+## 12-Week Study Plan (Week by Week)
 
-For each week:
-- **Topics** – what you learn
-- **Practice** – specific activities
-- **Outcome** – what you should be able to do
+### Week 1 – Setup, Python, and Data Basics
 
-### Week 1 – Python & ML Environment Setup
+**Goals:**
+- Get your environment ready.
+- Become comfortable with Python syntax and Jupyter.
+- Learn to load and inspect tabular data.
 
-**Topics**
-- Install Python, Jupyter Lab/Notebook (or VS Code), and core libraries:
-  - `numpy`, `pandas`, `matplotlib`, `seaborn`, `scikit-learn`
-- Python for data science refresh:
-  - Lists, dicts, loops, functions
-  - Using `pip` / `conda`
-- Intro to Jupyter notebooks
+**Key Topics:**
+- Installing: Anaconda or Miniconda (recommended), JupyterLab/Notebook.
+- Python basics: variables, data types, lists, dicts, loops, functions, modules.
+- `NumPy`: arrays, basic operations, indexing, shapes.
+- `pandas`: `DataFrame`, `Series`, reading CSV, `.head()`, `.info()`, `.describe()`.
 
-**Practice**
-- Install Anaconda or Miniconda.
-- Create a new environment: `conda create -n ml python=3.11`
-- Install libraries in that env.
-- Write a notebook that:
-  - Imports `numpy`, `pandas`, `matplotlib.pyplot`
-  - Creates a small NumPy array and computes mean/standard deviation.
-  - Loads a tiny CSV (e.g., from Kaggle or a sample dataset) using `pandas.read_csv`.
-  - Plots a simple line chart and histogram.
+**Practice:**
+- Write a few small Python functions (e.g., compute mean, variance).
+- Load a CSV (e.g., Titanic dataset from Kaggle) with pandas.
+- Explore:
+  - Number of rows/columns, missing values.
+  - Basic summary stats.
 
-**Outcome**
-- Comfort running code in Jupyter.
-- Able to load, inspect, and visualize simple tabular data.
+**Deliverables:**
+- A Jupyter notebook doing:
+  - Data loading (`pd.read_csv`)
+  - Basic summary statistics and simple plots (histograms, bar plots with matplotlib or seaborn).
 
 ---
 
-### Week 2 – Data Handling & Exploratory Data Analysis (EDA)
+### Week 2 – Exploratory Data Analysis (EDA) & Basic Visualization
 
-**Topics**
-- pandas essentials:
-  - `DataFrame`, `Series`, indexing, filtering (`loc`, `iloc`)
-  - Handling missing values: `isna`, `fillna`, `dropna`
-  - Basic transformations: `apply`, `groupby`, `merge`
-- EDA basics:
-  - Summary statistics: `.describe()`
-  - Plotting distributions, scatter plots, correlation matrix
-- Train/test split concept
+**Goals:**
+- Learn to explore data systematically.
+- Start thinking in terms of features and targets.
 
-**Practice**
-- Download a real dataset (e.g., **California Housing**, **Titanic**, or **Ames Housing**).
-- In a notebook:
-  - Inspect columns, data types, missing values, target variable.
-  - Visualize:
-    - Histograms of main features
-    - Scatter plots of key features vs target
-    - Correlation heatmap
-- Write a small function to:
-  - Clean basic issues (e.g., drop impossible values, simple imputations).
+**Key Topics:**
+- EDA workflow: question → inspect → visualize → hypothesize.
+- Visualizations:
+  - Histograms, boxplots, scatter plots, pair plots.
+  - Correlation matrix (heatmap).
+- Handling missing values (simple strategies):
+  - Drop vs. impute (mean/median/mode).
+- Basic feature types: numerical vs categorical.
 
-**Outcome**
-- Able to take a raw CSV and understand it: structure, basic patterns, and issues.
-- Understand why splitting into train/test matters (no peeking at test data).
+**Practice:**
+- Continue with Titanic (or another small dataset).
+- Identify:
+  - Which columns might help predict a target (e.g., survival).
+  - Distribution of important features.
+- Handle missing values naively (e.g., fill with median).
 
----
-
-### Week 3 – Supervised Learning Basics: Linear Regression
-
-**Topics**
-- Supervised learning concept: input features → target.
-- Linear regression intuition:
-  - Best fit line, minimizing squared error.
-  - Overfitting vs underfitting (at a basic level).
-- Using scikit‑learn:
-  - `fit`, `predict`, `score`
-  - `train_test_split`
-- Regression metrics: MSE, RMSE, MAE, R²
-
-**Practice**
-- On a regression dataset (e.g., California Housing, Ames Housing):
-  - Split into train/test.
-  - Train `LinearRegression` from sklearn.
-  - Evaluate with RMSE and R² on train and test.
-- Play with:
-  - Dropping/adding features and seeing performance changes.
-  - Manually normalizing some numerical features and seeing if it affects performance.
-
-**Outcome**
-- Able to train and evaluate a simple regression model.
-- Understand what loss/error means and why lower is better.
+**Deliverables:**
+- EDA notebook:
+  - Clear narrative: “My questions → what I plotted → what I found”.
 
 ---
 
-### Week 4 – Classification Basics: Logistic Regression & k‑NN
+### Week 3 – Core ML Workflow & Linear Regression
 
-**Topics**
-- Classification vs regression.
-- Logistic regression intuition:
-  - Outputs probability; decision boundary.
-- k‑Nearest Neighbors (k‑NN) intuition:
-  - Instance‑based; choice of k.
-- Classification metrics:
-  - Accuracy, confusion matrix, precision, recall, F1 score
-  - Basic idea of ROC and AUC
-- Class imbalance (only conceptually for now)
+**Goals:**
+- Understand the standard ML pipeline.
+- Train your first regression model (predicting a number).
 
-**Practice**
-- Use a binary classification dataset:
-  - e.g., Titanic survival or Breast Cancer dataset (`sklearn.datasets.load_breast_cancer`).
-- Train:
-  - `LogisticRegression`
-  - `KNeighborsClassifier` with different k values
-- Evaluate:
-  - Accuracy, confusion matrix
-  - Precision, recall, F1 using `classification_report`
-- Compare models and think:
-  - Which does better? Why might that be?
+**Key Topics:**
+- Supervised learning: regression vs classification.
+- Problem framing:
+  - What is the input? What is the output (target)?
+- Train/validation/test split:
+  - `train_test_split` from scikit-learn.
+- Linear regression:
+  - Intuition (line/plane minimizing squared error).
+  - Overfitting vs underfitting at a conceptual level.
+- Evaluation metrics for regression: MAE, MSE, RMSE, R².
 
-**Outcome**
-- Able to build simple classification models and understand basic metric trade‑offs.
+**Practice:**
+- Use a simple regression dataset (e.g., Boston Housing replacement: California Housing from scikit-learn).
+- Steps:
+  1. Split data into train/test.
+  2. Fit `LinearRegression` from scikit-learn.
+  3. Evaluate with RMSE or MAE on test set.
+  4. Interpret coefficients roughly (which features matter?).
 
----
-
-### Week 5 – Feature Engineering & Preprocessing Pipelines
-
-**Topics**
-- Types of features:
-  - Numerical vs categorical.
-- Preprocessing techniques:
-  - Scaling (StandardScaler, MinMaxScaler).
-  - One‑hot encoding (`OneHotEncoder`).
-  - Handling missing values with `SimpleImputer`.
-- Using `ColumnTransformer` and `Pipeline` in scikit‑learn:
-  - Keeping preprocessing steps linked with the model.
-
-**Practice**
-- Pick either a regression or classification dataset with both numeric and categorical features (Titanic or Ames Housing is ideal).
-- Build a `Pipeline` that:
-  - Imputes missing values.
-  - Scales numeric features.
-  - One‑hot encodes categorical features.
-  - Trains a model (e.g., LogisticRegression or RandomForestRegressor).
-- Compare performance with/without a proper pipeline.
-
-**Outcome**
-- Comfortable building a single pipeline that goes from raw data to predictions.
-- Understand that proper preprocessing is crucial and should be done only with training data (no data leakage).
+**Deliverables:**
+- A notebook implementing a linear regression model end-to-end.
 
 ---
 
-### Week 6 – Trees, Random Forests & Overfitting
+### Week 4 – Classification & Logistic Regression
 
-**Topics**
+**Goals:**
+- Understand classification problems and logistic regression.
+- Learn basic classification metrics.
+
+**Key Topics:**
+- Binary vs multi-class classification.
+- Logistic regression:
+  - Outputs probabilities.
+  - Decision threshold (0.5) and how it affects predictions.
+- Metrics:
+  - Accuracy, precision, recall, F1-score.
+  - Confusion matrix.
+  - ROC curve & AUC (basic conceptual understanding).
+
+**Practice:**
+- Use Titanic dataset to predict survival (binary classification).
+- Steps:
+  1. Select input features and target.
+  2. Handle missing values.
+  3. Encode categorical variables (e.g., `pd.get_dummies` or `OneHotEncoder`).
+  4. Train `LogisticRegression`.
+  5. Compute confusion matrix, precision, recall, F1, ROC AUC.
+
+**Deliverables:**
+- Notebook: Titanic survival prediction with logistic regression and metrics.
+
+---
+
+### Week 5 – Overfitting, Regularization & Model Evaluation
+
+**Goals:**
+- Develop intuition for overfitting/underfitting.
+- Learn basic regularization and cross-validation.
+
+**Key Topics:**
+- Train vs validation performance curves.
+- Regularization:
+  - L2 (Ridge) and L1 (Lasso) at a high level (penalizing large weights).
+  - In scikit-learn: `Ridge`, `Lasso`, `LogisticRegression(C=...)`.
+- Cross-validation:
+  - `cross_val_score`, K-fold.
+- Data leakage (what not to do: peeking at test set, fitting scaler on all data, etc.).
+
+**Practice:**
+- On your regression and classification tasks:
+  - Compare unregularized vs ridge/lasso/log-reg with different strengths.
+  - Use `cross_val_score` to compare models.
+- Visualize:
+  - Train vs validation performance for different regularization strengths (even a simple loop over `alpha` or `C`).
+
+**Deliverables:**
+- Notebook showing comparison of multiple models via cross-validation.
+
+---
+
+### Week 6 – Trees, Random Forests & Basic Feature Engineering
+
+**Goals:**
+- Learn non-linear models that work well “out of the box.”
+- Start simple feature engineering.
+
+**Key Topics:**
 - Decision trees:
-  - Splitting criteria, depth, overfitting.
+  - Intuition: splitting data by rules.
+  - Overfitting: very deep trees.
 - Random forests:
-  - Ensemble of trees, bagging, variance reduction.
-- Overfitting in more depth:
-  - High training accuracy, poor test accuracy.
-  - Controlling tree depth, min samples per split/leaf.
+  - Ensemble of trees.
+  - Tends to perform well without heavy tuning.
+- Basic feature engineering:
+  - Creating interaction terms or aggregates.
+  - Binning continuous variables.
+  - Simple domain-driven features.
+- Feature importance from trees/forests.
 
-**Practice**
-- On both a regression and classification dataset:
-  - Train `DecisionTreeRegressor` / `DecisionTreeClassifier`.
-  - Check training vs test performance.
-  - Increase/decrease `max_depth` and see what happens.
-- Train `RandomForestRegressor` / `RandomForestClassifier`:
-  - Compare to single tree.
-  - Tune basic hyperparameters: `n_estimators`, `max_depth`.
+**Practice:**
+- Use your previous datasets:
+  - Train `DecisionTreeClassifier/Regressor`.
+  - Train `RandomForestClassifier/Regressor`.
+  - Compare with logistic/linear models.
+- Check:
+  - Feature importances from random forest.
+  - Effect of `max_depth`, `n_estimators`.
 
-**Outcome**
-- Understand trees’ flexibility and why ensembles like random forests often perform better.
-- Recognize overfitting from metrics.
-
----
-
-### Week 7 – Gradient Boosting & Intro to Hyperparameter Tuning
-
-**Topics**
-- Gradient boosting intuition:
-  - Sequential trees correcting previous errors.
-- Using:
-  - `GradientBoostingClassifier/Regressor` or `XGBoost` / `LightGBM` if you install them.
-- Hyperparameter tuning:
-  - Manual grid search.
-  - `GridSearchCV` and `RandomizedSearchCV`.
-
-**Practice**
-- On one dataset you now know well:
-  - Train a gradient boosting model.
-  - Use `RandomizedSearchCV` to tune a few hyperparameters:
-    - learning_rate
-    - n_estimators
-    - max_depth
-- Compare tuned model to default and to random forest.
-
-**Outcome**
-- Know how to improve performance through structured hyperparameter search.
-- Have intuition that boosting is often a top performance baseline in tabular data.
+**Deliverables:**
+- Notebook: tree vs random forest vs linear/logistic on at least one dataset.
 
 ---
 
-### Week 8 – Model Evaluation in Depth & Cross‑Validation
+### Week 7 – Gradient Boosting & Handling Real-World Data Issues
 
-**Topics**
-- Train/validation/test splitting strategy.
-- Cross‑validation:
-  - k‑fold CV
-  - Why it gives more robust estimates.
-- Bias–variance tradeoff:
-  - High bias vs high variance.
-- Basic model comparison:
-  - How to fairly compare models using same train/test splits.
+**Goals:**
+- Learn another powerful model type (boosted trees).
+- Get exposure to messy data problems.
 
-**Practice**
-- Take 1 regression and 1 classification problem:
-  - Use `cross_val_score` to compare:
-    - Linear regression vs random forest vs gradient boosting (regression).
-    - Logistic regression vs random forest vs gradient boosting (classification).
-- Plot CV scores (e.g., boxplots or just mean ± std).
-- Reflect on:
-  - Which model is more stable?
-  - Any sign of overfitting during cross‑validation?
+**Key Topics:**
+- Gradient boosting overview:
+  - Sequential trees reducing errors of previous ones.
+- Algorithms/tools:
+  - `GradientBoosting*` from scikit-learn or XGBoost/LightGBM.
+- Real-world data issues:
+  - More nuanced missing value strategies.
+  - Skewed target distributions.
+  - Class imbalance (e.g., oversampling, class weights).
 
-**Outcome**
-- Able to systematically evaluate and compare several models.
-- Better feel for how to choose a “good enough” model.
+**Practice:**
+- Choose a somewhat messier dataset from Kaggle (e.g., a tabular competition).
+- Tasks:
+  1. Clean data (missing values, encodings).
+  2. Train random forest vs gradient boosting model.
+  3. Try basic hyperparameter tweaks (learning rate, number of estimators, max depth).
+- If classification is imbalanced, explore `class_weight='balanced'` or simple resampling.
+
+**Deliverables:**
+- Notebook: baseline vs boosted models on a more realistic dataset.
 
 ---
 
-### Week 9 – Intro to Neural Networks (for Tabular or Simple Image Data)
+### Week 8 – Unsupervised Learning: Clustering & Dimensionality Reduction
 
-**Topics**
+**Goals:**
+- Learn unsupervised basics to understand data without labels.
+- Visualize high-dimensional data.
+
+**Key Topics:**
+- K-means clustering:
+  - Intuition: group similar points, choose number of clusters.
+- Dimensionality reduction:
+  - PCA (Principal Component Analysis).
+- Use cases:
+  - Customer segmentation, exploratory grouping.
+  - Visualization (2D projection of high-dimensional data).
+
+**Practice:**
+- Dataset: something like Mall Customers (Kaggle) or any customer-like dataset.
+- Steps:
+  1. Standardize numeric features.
+  2. Apply PCA; visualize first 2 components.
+  3. Run k-means with different k; inspect clusters.
+  4. Try to interpret clusters.
+
+**Deliverables:**
+- Notebook performing PCA and k-means and interpreting results.
+
+---
+
+### Week 9 – Intro to Deep Learning (Neural Networks) for Tabular or Image Data
+
+**Goals:**
+- Demystify neural networks.
+- Implement a simple feedforward net for classification or regression.
+
+**Key Topics:**
 - Neural network basics:
-  - Perceptron, hidden layers, activation functions (ReLU, sigmoid).
-  - Loss function and gradient descent (high level).
+  - Layers, neurons, activations, loss, optimizer.
 - Framework:
-  - Keras (TensorFlow) or PyTorch (pick one).
-- Applying a small MLP (multi‑layer perceptron) to:
-  - Tabular data, or
-  - MNIST digits (simple image classification).
+  - Keras (TensorFlow) or PyTorch (Keras is simpler to start).
+- Overfitting in NNs:
+  - Early stopping, dropout, regularization.
 
-**Practice**
-- Install TensorFlow or PyTorch.
-- Using Keras (for example):
-  - Build a simple sequential model:
-    - Input → Dense(64, relu) → Dense(64, relu) → Dense(1 or #classes, appropriate activation).
-  - Train on:
-    - Either: your favorite tabular dataset (classification).
-    - Or: MNIST (handwritten digits, built into Keras).
-  - Track training and validation accuracy/loss.
-- Try:
-  - Different numbers of layers/neurons.
-  - Early stopping callback to reduce overfitting.
+**Practice:**
+- Option A (Tabular): Use an existing tabular dataset you’ve worked on.
+  - Build a small dense neural network for classification/regression.
+- Option B (Image): Use MNIST or Fashion-MNIST (easy image dataset).
+  - Simple feedforward or small CNN.
+- Steps:
+  1. Prepare data (normalize, train-test split).
+  2. Build model with a few layers.
+  3. Train, track loss/accuracy.
+  4. Evaluate on test set.
 
-**Outcome**
-- Know how to define, train, and evaluate a basic neural network.
-- Conceptual understanding of how deep learning fits into the ML toolkit.
+**Deliverables:**
+- Notebook with your first neural network model and evaluation.
 
 ---
 
-### Week 10 – End‑to‑End Workflow & Model Interpretability
+### Week 10 – Putting It Together: Full Pipeline & Basic Hyperparameter Tuning
 
-**Topics**
-- End‑to‑end ML workflow:
-  - Problem definition, EDA, baseline, model iterations, evaluation, and simple deployment plan.
-- Basic interpretability:
-  - Feature importances (trees).
-  - Permutation importance.
-  - Partial dependence plots (if time).
-- Saving and loading models.
+**Goals:**
+- Learn to build robust pipelines.
+- Do basic hyperparameter search.
 
-**Practice**
-- Take one dataset you haven’t used yet (new Kaggle dataset).
-- Perform:
-  1. Problem framing (what is the target? what metric matters?).
-  2. EDA.
-  3. Baseline model (e.g., logistic regression or random forest).
-  4. Improved model (boosted trees or tuned forest).
-  5. Interpretability:
-     - Plot feature importances.
-     - Describe top 3–5 features and how they influence predictions.
-  6. Save model (e.g., `joblib.dump`) and reload in a new script to run predictions.
+**Key Topics:**
+- Scikit-learn Pipelines:
+  - Combine preprocessing (scaling, encoding) + model.
+  - Avoid data leakage, tidy code.
+- Hyperparameter tuning:
+  - `GridSearchCV` / `RandomizedSearchCV`.
+- Evaluation:
+  - Properly using validation sets and cross-validation.
+  - Reporting test performance only at the end.
 
-**Outcome**
-- Able to execute a full ML project from raw data to a usable model with explanations.
+**Practice:**
+- Take a dataset from a previous week (e.g., Titanic or a Kaggle dataset).
+- Build a `Pipeline`:
+  - Preprocessing with `ColumnTransformer` (numeric vs categorical).
+  - Model: logistic regression, random forest, or gradient boosting.
+- Use `RandomizedSearchCV` for tuning a few key hyperparameters.
+- Evaluate best model on a held-out test set.
 
----
-
-### Week 11 – Working on a Larger Project & Handling Real‑World Issues
-
-**Topics**
-- Messy data:
-  - More missing values, weird encodings, outliers.
-- Data leakage examples and how to avoid them.
-- Documentation and versioning of experiments.
-
-**Practice**
-- Start your **4th project** (see below – an intermediate/advanced tabular ML project).
-- Focus on:
-  - Careful data cleaning.
-  - Creating a robust pipeline.
-  - Doing proper train/validation/test splits.
-  - Documenting what you try, what works, what doesn’t.
-- Track:
-  - Best metrics achieved.
-  - Which design choices helped.
-
-**Outcome**
-- Experience dealing with more realistic data and writing cleaner, reusable code.
+**Deliverables:**
+- Notebook: end-to-end, from raw data to tuned model with a single clean interface.
 
 ---
 
-### Week 12 – Putting It All Together & Portfolio Prep
+### Week 11 – Project Focus & Error Analysis
 
-**Topics**
-- Reviewing what you’ve learned.
-- Writing up project reports or blog posts.
-- Optional: simple deployment:
-  - Using a model in a small script or minimal web app (e.g., Flask/FastAPI/Streamlit).
+**Goals:**
+- Start consolidating into more ambitious projects.
+- Learn to systematically analyze model errors.
 
-**Practice**
-- Polish 2–3 of your best projects:
-  - Clean up notebooks/code.
-  - Add README with:
-    - Problem statement
-    - Data description
-    - Approach
-    - Results (with metrics and plots)
-    - Future work or limitations
-- Optional:
-  - Use Streamlit to create a simple UI where you can input features and get a prediction.
+**Key Topics:**
+- Error analysis:
+  - Slice performance by feature segments (e.g., different age groups).
+  - Examine misclassified samples.
+- Model comparison:
+  - How to justify model choice (performance + interpretability + simplicity).
 
-**Outcome**
-- A small portfolio that demonstrates applied ML skills.
-- Solid foundation to keep learning more advanced topics independently.
+**Practice:**
+- Choose one of your bigger projects (from list below) and:
+  - Do careful error analysis.
+  - Try simple improvements via feature engineering, hyperparameter tweaks, or model choice.
+- Document:
+  - What errors are common.
+  - Which changes help and which don’t.
+
+**Deliverables:**
+- Updated project notebook/report with a section on error analysis.
+
+---
+
+### Week 12 – Polishing, Documentation, and Next Steps
+
+**Goals:**
+- Wrap up: clean code, documentation, and reproducibility.
+- Plan your learning path beyond 12 weeks.
+
+**Key Topics:**
+- Code organization:
+  - Separate config, data loading, training, evaluation.
+- Reproducibility:
+  - Random seeds, environment requirements (`requirements.txt` or `environment.yml`).
+- Documentation:
+  - README files.
+  - Clear narrative of problem, data, approach, results, and future work.
+- Next topics to explore (briefly):
+  - More math (linear algebra, probability).
+  - More deep learning (CNNs, RNNs, Transformers).
+  - MLOps (deployment, monitoring).
+
+**Practice:**
+- Choose 1–2 projects and:
+  - Turn them into polished, shareable repos (GitHub).
+  - Write clear READMEs and short write-ups.
+
+**Deliverables:**
+- At least one well-documented project repository.
 
 ---
 
 ## 5 Projects (Beginner → Advanced)
 
-You can spread these over the 12 weeks as indicated.
+You can start the first project around Week 3–4 and weave the others into later weeks as suggested.
 
----
-
-### Project 1 (Beginner) – House Price Prediction (Linear Regression)
+### Project 1 (Beginner): House Price Prediction (Regression)
 
 **When:** Weeks 3–4
 
-**Description**
-Use a housing dataset (Kaggle “House Prices: Advanced Regression Techniques” or simpler California Housing). Train a linear regression model to predict house prices based on features like square footage, number of rooms, etc.
+**Description:**
+Predict house prices from features like area, number of rooms, location, etc. Use a public dataset (e.g., Kaggle “House Prices: Advanced Regression Techniques” or simpler ones).
 
-**Steps (outline, not full code)**
-1. Load dataset, inspect columns.
-2. Perform basic EDA: distributions, correlations.
-3. Handle missing values simply (drop or basic impute).
-4. Encode categorical variables (one‑hot encoding).
-5. Train/test split.
-6. Train `LinearRegression`.
-7. Evaluate using RMSE and R².
-8. Write a short summary: which features seem most important? How good is the performance?
+**Core Steps:**
+1. Load data, inspect basic stats.
+2. Handle missing values in a simple way.
+3. Select a subset of numeric features (to start).
+4. Train-test split.
+5. Train a `LinearRegression` model.
+6. Evaluate using MAE/RMSE.
+7. Optional: Add regularization (Ridge/Lasso) and compare.
 
-**Key Concepts Reinforced**
-- Data loading and EDA
-- Train/test split
-- Regression model training and basic evaluation
-- One‑hot encoding and handling missing values
+**Key Concepts Reinforced:**
+- Regression setup & framing.
+- Train/test split.
+- Basic preprocessing (handling missing values).
+- Linear regression and evaluation metrics.
 
 ---
 
-### Project 2 (Beginner–Intermediate) – Titanic Survival Classification
+### Project 2 (Lower-Intermediate): Titanic Survival Prediction (Classification)
 
 **When:** Weeks 4–5
 
-**Description**
-Use the classic Titanic dataset from Kaggle to predict whether a passenger survived. Start with logistic regression, then try k‑NN or a tree‑based model.
+**Description:**
+Use the famous Titanic dataset to predict whether a passenger survived. This is a classic beginner classification project with mixed data types.
 
-**Steps**
-1. Load data; understand each feature (Passenger class, Age, Sex, etc.).
-2. Clean:
-   - Impute missing ages and fares.
-   - Convert categorical features with one‑hot encoding.
-3. Create preprocessing + model `Pipeline`.
-4. Train logistic regression, evaluate with:
-   - Accuracy
-   - Confusion matrix
-   - Precision, recall, F1
-5. Try:
-   - A `RandomForestClassifier` in the same pipeline.
-   - Compare metrics to logistic regression.
+**Core Steps:**
+1. Exploratory data analysis (EDA).
+2. Handle missing data (e.g., age, cabin).
+3. Encode categorical variables (e.g., sex, embarkation port).
+4. Train logistic regression and a decision tree or random forest.
+5. Compare accuracy, precision, recall, F1.
+6. Inspect feature importances for tree-based models.
 
-**Key Concepts Reinforced**
-- Classification vs regression
-- Logistic regression and random forests
-- Pipelines and preprocessing
-- Classification metrics and trade‑offs
+**Key Concepts Reinforced:**
+- Binary classification.
+- Categorical encoding and mixed feature types.
+- Logistic regression vs tree-based models.
+- Classification metrics and confusion matrix.
 
 ---
 
-### Project 3 (Intermediate) – Customer Churn Prediction (Classification with Imbalanced Data)
+### Project 3 (Intermediate): Customer Segmentation with Clustering
 
-**When:** Weeks 6–8
+**When:** Weeks 8–9
 
-**Description**
-Pick a customer churn dataset (e.g., “Telco Customer Churn” on Kaggle). Predict whether a customer will leave the service. Churn datasets are often imbalanced, so you must think carefully about metrics beyond accuracy.
+**Description:**
+Use an unlabeled dataset (like “Mall Customers” or e-commerce customer data) to discover customer segments using k-means clustering and PCA.
 
-**Steps**
-1. Understand features (contract type, monthly charges, tenure, etc.).
-2. Clean and preprocess:
-   - Handle missing values.
-   - Encode categoricals.
-   - Scale numeric features if needed.
-3. Use `train_test_split` (or train/val/test split).
-4. Train a baseline logistic regression.
-5. Check class balance:
-   - How many churn vs non‑churn?
-   - Use accuracy, precision, recall, F1, ROC‑AUC.
-6. Try:
-   - Random forest
-   - Gradient boosting (e.g., `XGBClassifier` or `GradientBoostingClassifier`)
-   - Compare metrics using cross‑validation.
-7. (Optional) Handle imbalance:
-   - Class weights (`class_weight='balanced'`) or simple resampling.
+**Core Steps:**
+1. Clean and standardize numerical features.
+2. Apply PCA; visualize 2D projection.
+3. Run k-means with different numbers of clusters (e.g., 3–8).
+4. Evaluate and interpret clusters (e.g., high-spend vs low-spend customers).
+5. Optionally, profile clusters with summary stats and visualizations.
 
-**Key Concepts Reinforced**
-- Handling imbalanced datasets
-- More practical feature engineering and preprocessing
-- Tree‑based models and gradient boosting
-- Cross‑validation and model comparison
+**Key Concepts Reinforced:**
+- Unsupervised learning mindset.
+- Clustering (k-means).
+- Dimensionality reduction (PCA).
+- Interpretation of clusters and turning them into business insights.
 
 ---
 
-### Project 4 (Intermediate–Advanced) – Tabular ML Competition-Style Project
+### Project 4 (Upper-Intermediate): Kaggle Tabular Competition (End-to-End Pipeline)
 
-**When:** Weeks 9–11
+**When:** Weeks 7–11 (spread over time)
 
-**Description**
-Pick a more complex tabular dataset from Kaggle (e.g., a competition that’s now finished). The goal is not to rank highly but to simulate a real ML workflow and push your skills: robust pipelines, hyperparameter tuning, interpretation.
+**Description:**
+Pick a beginner-friendly Kaggle tabular competition (e.g., “Titanic” if you want to go deeper, or a different one like “Spaceship Titanic”, “Home Credit Default Risk” if you’re comfortable). Your goal is an end-to-end solution: from raw data to tuned model with a reproducible pipeline.
 
-**Steps**
-1. Read the competition description:
-   - What’s the target?
-   - Which metric is used (RMSE, AUC, log loss, etc.)?
-2. EDA:
-   - Identifying data types, missingness, outliers.
-   - Domain understanding from feature descriptions.
-3. Build a strong baseline:
-   - Random forest or gradient boosting with default params.
-4. Improve:
-   - Proper `ColumnTransformer`+`Pipeline`.
-   - Hyperparameter tuning with `RandomizedSearchCV`.
-   - Cross‑validation to select the best model.
-5. Interpret:
-   - Feature importances.
-   - Simple permutation importance.
-6. Document:
-   - Decisions, experiments, final results.
+**Core Steps:**
+1. Read competition description and evaluation metric.
+2. Clean data thoroughly:
+   - Missing values.
+   - Outliers (if needed).
+   - Categorical encoding.
+3. Build `Pipeline` with:
+   - `ColumnTransformer` for preprocessing.
+   - Model (random forest / gradient boosting).
+4. Use `RandomizedSearchCV` for hyperparameter tuning.
+5. Evaluate via cross-validation and final test/hold-out.
+6. Submit to Kaggle if applicable and track your score.
+7. Perform basic error analysis; attempt a few systematic improvements.
 
-**Key Concepts Reinforced**
-- End‑to‑end ML project flow
-- Cross‑validation and hyperparameter tuning in a structured way
-- Interpreting models and explaining results
-- Thinking about the problem’s metric and business impact
+**Key Concepts Reinforced:**
+- End-to-end ML workflow on a realistic problem.
+- Pipelines and proper preprocessing.
+- Hyperparameter tuning and cross-validation.
+- Reading/understanding a problem spec and working toward a metric.
 
 ---
 
-### Project 5 (Advanced) – Simple Neural Network Project (MNIST or Tabular NN)
+### Project 5 (Advanced): Image or Tabular Deep Learning Project
 
 **When:** Weeks 9–12
 
-**Option A: MNIST Handwritten Digit Classification**
+**Option A – Image Classification (Recommended for variety):**
+Use an image dataset (e.g., CIFAR-10 or a smaller subset, or custom images) to train a neural network to classify images.
 
-**Description**
-Use the MNIST dataset (28x28 grayscale images of digits 0–9) to train a neural network (or simple CNN) and classify digits.
+**Option B – Tabular Deep Learning:**
+Apply a neural network to a tabular dataset where you’ve already used classical models—compare performance and behavior.
 
-**Steps**
-1. Load MNIST via Keras datasets.
+**Core Steps (for Image Classification):**
+1. Choose dataset (e.g., CIFAR-10 via Keras datasets).
 2. Preprocess:
-   - Normalize pixel values to [0,1].
-   - One‑hot encode labels.
-3. Define a Keras model:
-   - Simple dense network: flatten → Dense(128, relu) → Dense(10, softmax).
-   - Or small CNN (Conv2D → MaxPooling2D → Dense).
-4. Train with train/validation split; use early stopping.
-5. Evaluate test accuracy and confusion matrix.
-6. Visualize:
-   - Some misclassified examples.
-   - Training vs validation loss/accuracy curves.
+   - Normalize images.
+   - Train/validation/test split.
+3. Build a simple CNN:
+   - Convolutional + pooling layers.
+   - Dense layers with dropout.
+4. Train and track learning curves.
+5. Evaluate test performance.
+6. Perform error analysis (look at misclassified images).
 
-**Option B: Neural Network for Tabular Churn or House Prices**
-
-Same idea, but with tabular input instead of images.
-
-**Key Concepts Reinforced**
-- Neural network architectures and training loop
-- Overfitting and regularization via early stopping, dropout
-- Interpreting training curves and validation performance
-- Extending ML skills beyond scikit‑learn into deep learning frameworks
+**Key Concepts Reinforced:**
+- Neural network architecture (layers, activations).
+- Training loop and optimization.
+- Overfitting/regularization in deep learning (dropout, early stopping).
+- Comparing deep learning vs classic ML.
 
 ---
 
-## How to Use This Plan Effectively
+## How to Work Week to Week (Mindset & Habits)
 
-- **Week structure**: Aim for a cycle of:
-  - 40% reading/watching tutorials
-  - 60% coding and experimenting
-- **Struggle deliberately**:
-  - Before looking up an answer, try to debug and experiment on your own.
-  - When something breaks, ask: “What does this error really mean?”
-- **Maintain a learning log**:
-  - After each week, write a short note:
-    - What you learned
-    - What you struggled with
-    - One thing you want to revise later
+- **Daily (or near-daily) practice**:
+  - 1–2 hours of coding > 6 hours of passive watching.
+- **Struggle productively**:
+  - Try implementing from scratch before checking solutions.
+  - When stuck, write down exactly what you’re trying, what you expect, and what you observe.
+- **Document everything**:
+  - Treat notebooks as lab journals: write short paragraphs explaining what you’re doing and why.
+- **Focus on shipping**:
+  - It’s better to finish a simple project and document it well than to start five advanced things and abandon them.
 
-If you tell me your current math/programming comfort level and how many hours/week you realistically have, I can adjust this plan to be slightly lighter or heavier and suggest specific resources (courses/books) to pair with each week.
+---
+
+If you’d like, I can next help you:
+- Select specific datasets/competitions for each project.
+- Design a concrete weekly schedule (e.g., “Day 1–2 do X, Day 3 do Y”).
+- Or give you starter code skeletons for each project that you then complete yourself.
